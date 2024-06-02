@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP_HOST} ^admission-ecole\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.admission-ecole\.com$
+RewriteRule .* https://admission-ecole.com%{REQUEST_URI} [R=301,L]
+
+
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]
