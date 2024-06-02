@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="page-section container">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>#{{ assertion.id }}</td>
+            </tr>
+            <tr>
+                <th>TCF </th>
+                <td>{{ assertion.getISTcf ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>Score TCF</th>
+                <td>{{ assertion.tcfScore }}</td>
+            </tr>
+            <tr>
+                <th>Domaine d'études</th>
+                <td>{{ assertion.studyField }}</td>
+            </tr>
+            <tr>
+                <th>Niveau d'étude</th>
+                <td>{{ assertion.getStudyLevelString }}</td>
+            </tr>
+            <tr>
+                <th>Etudes à Paris</th>
+                <td>{{ assertion.getWhereToStudyString }}</td>
+            </tr>
+            <tr>
+                <th>Autre</th>
+                <td>{{ assertion.otherWhereToStudy }}</td>
+            </tr>
+            <tr>
+                <th>Accepte la réorientation</th>
+                <td>{{ assertion.getISReorientation ? 'Oui' : 'Non'}}</td>
+            </tr>
+            <tr>
+                <th>Quel domaine de réorientation</th>
+                <td>{{ assertion.reorientationDetail }}</td>
+            </tr>
+            <tr>
+                <th>Autre domaine de réorientation</th>
+                <td>{{ assertion.reorientationDetailExtended }}</td>
+            </tr>
+            <tr>
+                <th>Accepte paiement à l'avance</th>
+                <td>{{ assertion.getISPaidInAdvance ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>A postulé dans une autre école</th>
+                <td>{{ assertion.getISAssertToOtherSchool ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>Quelles ecoles</th>
+                <td>{{ assertion.assertToOtherSchoolName }}</td>
+            </tr>
+            <tr>
+                <th>Pourquoi pas?</th>
+                <td>{{ assertion.assertToOtherSchoolNoWhy }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ assertion.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ assertion.familyName }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ assertion.email }}</td>
+            </tr>
+            <tr>
+                <th>Nationalité</th>
+                <td>{{ assertion.nationality }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ assertion.city }}</td>
+            </tr>
+            <tr>
+                <th>Numero de téléphone</th>
+                <td>{{ assertion.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ assertion.position }}</td>
+            </tr>
+            <tr>
+                <th>Autre Statut</th>
+                <td>{{ assertion.positionOther }}</td>
+            </tr>
+            <tr>
+                <th>Comment connaissez vous l'agence</th>
+                <td>{{ assertion.getHowDidYouKnowOurAgencyString }}</td>
+            </tr>
+            <tr>
+                <th>Autre</th>
+                <td>{{ assertion.howDidYouKnowOurAgencyOther }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

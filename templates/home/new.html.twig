@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<!-- Contact-->
+<section class="page-section bg-secondary mt-5">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="text-white mt-0">Les plus de nos services </h2>
+                <hr class="divider divider-light" />
+                <p class="text-white-75 mb-4">
+                    <ul style="list-style-type: none;">
+                        <li>Plus de 50 écoles partenaires</li>
+                        <li>Aucun frais d’agence, service totalement gratuit</li>
+                        <li>Accompagnement jusqu’à l’obtention de visa </li>
+                        <li>Et plus encore….</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-section" id="contact">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6 text-center">
+                <p class="text-muted mb-5">Aidez-nous à vous aider, répondez à ces quelques questions</p>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+            <div class="col-lg-6">
+                {{ form_start(form) }}
+                <div class="isTcf">
+                    {{ form_row(form.isTcf) }}
+                </div>
+                <div class="tcfScore" style="display: none;">
+                    {{ form_row(form.tcfScore) }}
+                </div>
+                <div class="studyField">
+                    {{ form_row(form.studyField) }}
+                </div>
+                <div class="studyLevel">
+                    {{ form_row(form.studyLevel) }}
+                </div>
+                <div class="whereToStudy">
+                    {{ form_row(form.whereToStudy) }}
+                </div>
+                <div class="otherWhereToStudy" style="display: none;">
+                    {{ form_row(form.otherWhereToStudy) }}
+                </div>
+                <div class="isReorientation">
+                    {{ form_row(form.isReorientation) }}
+                </div>
+                <div class="reorientationDetail" style="display: none;">
+                    {{ form_row(form.reorientationDetail) }}
+                </div>
+                <div class="reorientationDetailExtended" style="display: none;">
+                    {{ form_row(form.reorientationDetailExtended) }}
+                </div>
+                <div class="isPaidInAdvance">
+                    {{ form_row(form.isPaidInAdvance) }}
+                </div>
+                <div class="isAssertToOtherSchool">
+                    {{ form_row(form.isAssertToOtherSchool) }}
+                </div>
+                <div class="assertToOtherSchoolName" style="display: none;">
+                    {{ form_row(form.assertToOtherSchoolName) }}
+                </div>
+                <div class="assertToOtherSchoolNoWhy" style="display: none;">
+                    {{ form_row(form.assertToOtherSchoolNoWhy) }}
+                </div>
+                <div class="firstName">
+                    {{ form_row(form.firstName) }}
+                </div>
+                <div class="familyName">
+                    {{ form_row(form.familyName) }}
+                </div>
+                <div class="email">
+                    {{ form_row(form.email) }}
+                </div>
+                <div class="nationality">
+                    {{ form_row(form.nationality) }}
+                </div>
+                <div class="city">
+                    {{ form_row(form.city) }}
+                </div>
+                <div class="phoneNumber">
+                    {{ form_row(form.phoneNumber) }}
+                </div>
+                <div class="position">
+                    {{ form_row(form.position) }}
+                </div>
+                <div class="positionOther" style="display: none;">
+                    {{ form_row(form.positionOther) }}
+                </div>
+                <div class="howDidYouKnowOurAgency">
+                    {{ form_row(form.howDidYouKnowOurAgency) }}
+                </div>
+                <div class="howDidYouKnowOurAgencyOther" style="display: none;">
+                    {{ form_row(form.howDidYouKnowOurAgencyOther) }}
+                </div>
+                <button class="btn btn-secondary mt-4">Envoyer</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

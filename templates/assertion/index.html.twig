@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Assertion index{% endblock %}
+
+{% block body %}
+<div class="container page-section" style="min-height: 80vh;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Nationalité</th>
+                <th>Ville</th>
+                <th>Numero de téléphone</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for assertion in assertions %}
+            <tr>
+                <td>{{ assertion.id }}</td>
+                <td>{{ assertion.firstName }}</td>
+                <td>{{ assertion.familyName }}</td>
+                <td>{{ assertion.email }}</td>
+                <td>{{ assertion.nationality }}</td>
+                <td>{{ assertion.city }}</td>
+                <td>{{ assertion.phoneNumber }}</td>
+                <td>
+                    <a href="{{ path('app_assertion_show', {'id': assertion.id}) }}">Afficher</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="25">no records found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
