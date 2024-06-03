@@ -25,16 +25,14 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="{{path('app_home')}}">Admission Ecole</a>
+            <a class="navbar-brand" href="{{path('app_home')}}"><img src="{{asset('/assets/img/logo-admission-ecole.png')}}" alt=""></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
                     <li class="nav-item"><a class="nav-link" href="{{path('app_home')}}">Accueil</a></li>
-                    {#<li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li> #}
+                    <li class="nav-item"><a class="nav-link" href="{{path('app_assertion_new')}}">Postuler Mantenant</a></li>
                 </ul>
             </div>
         </div>
@@ -43,7 +41,7 @@
     <!-- Footer-->
     <footer class="bg-light py-5">
         <div class="container px-4 px-lg-5">
-            <div class="small text-center text-muted">Copyright &copy; 2024 - Admission Ecole</div>
+            <div class="small text-center text-muted">Copyright &copy; {{ "now"|date("Y") }} - Admission Ecole</div>
         </div>
     </footer>
     <!-- Bootstrap core JS-->

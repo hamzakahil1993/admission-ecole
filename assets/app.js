@@ -11,7 +11,6 @@ import './styles/app.css';
 
 
 window.addEventListener('DOMContentLoaded', event => {
-
     // Navbar shrink function
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');
@@ -59,9 +58,6 @@ window.addEventListener('DOMContentLoaded', event => {
         elements: '#portfolio a.portfolio-box'
     });
 
-});
-
-document.addEventListener("DOMContentLoaded", function() {
     function toggleElement(radioSelector, triggerValue, showTargetClass, hideTargetClass = null) {
         var radioInput = document.querySelector(`${radioSelector}:checked`);
         var showTargetElement = document.querySelector(`.${showTargetClass}`);
@@ -84,8 +80,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function addToggleEvent(radioSelector, triggerValue, showTargetClass, hideTargetClass = null) {
         var radioInputs = document.querySelectorAll(radioSelector);
-        radioInputs.forEach(function(input) {
-            input.addEventListener('change', function() {
+        radioInputs.forEach(function (input) {
+            input.addEventListener('change', function () {
                 toggleElement(radioSelector, triggerValue, showTargetClass, hideTargetClass);
             });
         });
@@ -99,5 +95,6 @@ document.addEventListener("DOMContentLoaded", function() {
     addToggleEvent('input[name="assertion[isAssertToOtherSchool]"]', '1', 'assertToOtherSchoolName', 'assertToOtherSchoolNoWhy');
     addToggleEvent('input[name="assertion[position]"]', 'Autre', 'positionOther');
     addToggleEvent('input[name="assertion[howDidYouKnowOurAgency]"]', '4', 'howDidYouKnowOurAgencyOther');
+
 });
 

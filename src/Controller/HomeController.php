@@ -5,17 +5,32 @@ namespace App\Controller;
 use App\Entity\Assertion;
 use App\Form\AssertionType;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 #[Route('/home')]
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(): Response
+    public function index(MailerInterface $mailer): Response
     {
+        $email = (new Email())
+            ->from('developers@admission-ecole.com')
+            ->to('hamza.kahil@gmail.com')
+            ->subject('Azul')
+            ->text('Azul test');
+        try {
+            $sent = $mailer->send($email);
+        } catch (Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+            throw $e;
+        }
         return $this->render('home/index.html.twig', []);
     }
 
@@ -43,6 +58,4 @@ class HomeController extends AbstractController
     {
         return $this->render('home/success_assertion.html.twig', []);
     }
-
-
 }
