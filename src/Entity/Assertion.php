@@ -116,6 +116,9 @@ class Assertion
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $howDidYouKnowOurAgencyOther = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $assertToOtherSchoolNoWhyOther = null;
+
     public function getId(): int
     {
         return $this->id;
@@ -409,6 +412,18 @@ class Assertion
     public function setHowDidYouKnowOurAgencyOther(?string $howDidYouKnowOurAgencyOther): static
     {
         $this->howDidYouKnowOurAgencyOther = $howDidYouKnowOurAgencyOther;
+
+        return $this;
+    }
+
+    public function getAssertToOtherSchoolNoWhyOther(): ?string
+    {
+        return $this->assertToOtherSchoolNoWhyOther;
+    }
+
+    public function setAssertToOtherSchoolNoWhyOther(?string $assertToOtherSchoolNoWhyOther): static
+    {
+        $this->assertToOtherSchoolNoWhyOther = $assertToOtherSchoolNoWhyOther;
 
         return $this;
     }

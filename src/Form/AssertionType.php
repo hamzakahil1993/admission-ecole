@@ -41,8 +41,10 @@ class AssertionType extends AbstractType
                     'Bac+4' => Assertion::STUDY_LEVEL_BAC_PLUS_4,
                     'Bac+5' => Assertion::STUDY_LEVEL_BAC_PLUS_5,
                 ],
-                'expanded' => true,
+                'expanded' => false,
+                'multiple' => false,
                 'label' => 'Quel est votre niveau d’étude ?',
+                'placeholder' => 'Sélectionnez une réponse'
             ])
             ->add('whereToStudy', ChoiceType::class, [
                 'choices' => [
@@ -73,8 +75,11 @@ class AssertionType extends AbstractType
                     'Design' => 'Design',
                     'Autre' => 'Autre',
                 ],
-                'expanded' => true,
+                'expanded' => false,
+                'multiple' => false,
                 'label' => 'Lequel ?',
+                'placeholder' => 'Sélectionnez une réponse'
+
             ])
             ->add('reorientationDetailExtended', null, [
                 'label' => 'Précisez lequel ?',
@@ -101,15 +106,25 @@ class AssertionType extends AbstractType
                 'label' => 'Précisez laquelle ou lesquelles ?',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Enter your text here...',
+                    'placeholder' => '',
                 ],
             ])
-            ->add('assertToOtherSchoolNoWhy', TextareaType::class, [
-                'label' => 'Pourquoi ?',
-                'required' => false,
-                'attr' => [
-                    'placeholder' => '(Je n’ai pas le temps, je n’ai pas trouvé d’école qui convient à mon budget, je n’ai pas trouvé de formation qui convient à mon projet, autre)',
+            ->add('assertToOtherSchoolNoWhy', ChoiceType::class, [
+                'choices' => [
+                    'Je n’ai pas le temps' => 'Je n’ai pas le temps',
+                    'Je n’ai pas trouvé d’école qui convient à mon budget' => 'Je n’ai pas trouvé d’école qui convient à mon budget',
+                    'Commerce' => 'Commerce',
+                    'Je n’ai pas trouvé de formation qui convient à mon projet' => 'Je n’ai pas trouvé de formation qui convient à mon projet',
+                    'Autre' => 'Autre',
                 ],
+                'expanded' => false,
+                'multiple' => false,
+                'label' => 'Pourquoi',
+                'placeholder' => 'Sélectionnez une réponse'
+            ])
+            ->add('assertToOtherSchoolNoWhyOther', TextareaType::class, [
+                'label' => 'Précisez pourquoi ?',
+                'required' => false,
             ])
             ->add('firstName', null, [
                 'label' => 'Prénom',
@@ -144,8 +159,10 @@ class AssertionType extends AbstractType
                     'En recherche d’emploi' => 'En recherche d’emploi',
                     'Autre' => 'Autre',
                 ],
-                'expanded' => true,
+                'expanded' => false,
+                'multiple' => false,
                 'label' => 'Statut',
+                'placeholder' => 'Sélectionnez une réponse'
             ])
             ->add('positionOther', null, [
                 'label' => 'Précisez lequel',
@@ -158,8 +175,11 @@ class AssertionType extends AbstractType
                     'Bouche à oreil' => Assertion::KNOW_AGENCY_MOUTH,
                     'Autre' => Assertion::KNOW_AGENCY_OTHER,
                 ],
-                'expanded' => true,
+                'expanded' => false,
+                'multiple' => false,
                 'label' => 'Comment avez-vous connu notre agence ?',
+                'placeholder' => 'Sélectionnez une réponse'
+
             ])
             ->add('howDidYouKnowOurAgencyOther', null, [
                 'label' => 'Précisez comment?',

@@ -58,43 +58,121 @@ window.addEventListener('DOMContentLoaded', event => {
         elements: '#portfolio a.portfolio-box'
     });
 
-    function toggleElement(radioSelector, triggerValue, showTargetClass, hideTargetClass = null) {
-        var radioInput = document.querySelector(`${radioSelector}:checked`);
-        var showTargetElement = document.querySelector(`.${showTargetClass}`);
-        var hideTargetElement = hideTargetClass ? document.querySelector(`.${hideTargetClass}`) : null;
-
-        if (showTargetElement) {
-            if (radioInput && radioInput.value == triggerValue) {
-                showTargetElement.style.display = 'block';
-                if (hideTargetElement) {
-                    hideTargetElement.style.display = 'none';
-                }
+    function isTcfToggleElement() {
+        var radioInput = document.querySelector('input[name="assertion[isTcf]"]:checked');
+        var tcfScore = document.querySelector('.tcfScore');
+        if (tcfScore) {
+            if (radioInput && radioInput.value == 1) {
+                tcfScore.style.display = 'block';
             } else {
-                showTargetElement.style.display = 'none';
-                if (hideTargetElement) {
-                    hideTargetElement.style.display = 'block';
-                }
+                tcfScore.style.display = 'none';
             }
         }
     }
+    var isTcfRadioInputs = document.querySelectorAll('input[name="assertion[isTcf]"]');
+    isTcfRadioInputs.forEach(function (input) {
+        input.addEventListener('change', isTcfToggleElement);
+    });
 
-    function addToggleEvent(radioSelector, triggerValue, showTargetClass, hideTargetClass = null) {
-        var radioInputs = document.querySelectorAll(radioSelector);
-        radioInputs.forEach(function (input) {
-            input.addEventListener('change', function () {
-                toggleElement(radioSelector, triggerValue, showTargetClass, hideTargetClass);
-            });
-        });
+    function whereToStudyToggleElement() {
+        var radioInput = document.querySelector('input[name="assertion[whereToStudy]"]:checked');
+        var otherWhereToStudy = document.querySelector('.otherWhereToStudy');
+        if (otherWhereToStudy) {
+            if (radioInput && radioInput.value == 2) {
+                otherWhereToStudy.style.display = 'block';
+            } else {
+                otherWhereToStudy.style.display = 'none';
+            }
+        }
     }
+    var whereToStudyRadioInputs = document.querySelectorAll('input[name="assertion[whereToStudy]"]');
+    whereToStudyRadioInputs.forEach(function (input) {
+        input.addEventListener('change', whereToStudyToggleElement);
+    });
 
-    // Define the toggles
-    addToggleEvent('input[name="assertion[isTcf]"]', '1', 'tcfScore');
-    addToggleEvent('input[name="assertion[whereToStudy]"]', '2', 'otherWhereToStudy');
-    addToggleEvent('input[name="assertion[isReorientation]"]', '1', 'reorientationDetail');
-    addToggleEvent('input[name="assertion[reorientationDetail]"]', 'Autre', 'reorientationDetailExtended');
-    addToggleEvent('input[name="assertion[isAssertToOtherSchool]"]', '1', 'assertToOtherSchoolName', 'assertToOtherSchoolNoWhy');
-    addToggleEvent('input[name="assertion[position]"]', 'Autre', 'positionOther');
-    addToggleEvent('input[name="assertion[howDidYouKnowOurAgency]"]', '4', 'howDidYouKnowOurAgencyOther');
+    function isReorientationToggleElement() {
+        var radioInput = document.querySelector('input[name="assertion[isReorientation]"]:checked');
+        var reorientationDetail = document.querySelector('.reorientationDetail');
+        if (reorientationDetail) {
+            if (radioInput && radioInput.value == 1) {
+                reorientationDetail.style.display = 'block';
+            } else {
+                reorientationDetail.style.display = 'none';
+            }
+        }
+    }
+    var isReorientationRadioInputs = document.querySelectorAll('input[name="assertion[isReorientation]"]');
+    isReorientationRadioInputs.forEach(function (input) {
+        input.addEventListener('change', isReorientationToggleElement);
+    });
 
+    function reorientationDetailToggleElement(event) {
+        var reorientationDetailExtended = document.querySelector('.reorientationDetailExtended');
+        const selectedValue = event.target.value;
+        if (selectedValue == 'Autre') {
+            reorientationDetailExtended.style.display = 'block';
+        } else {
+            reorientationDetailExtended.style.display = 'none';
+        }
+    }
+    const reorientationDetailInput = document.getElementById('assertion_reorientationDetail');
+    reorientationDetailInput.addEventListener('change', reorientationDetailToggleElement);
+
+    function isAssertToOtherSchoolToggleElement() {
+        var radioInput = document.querySelector('input[name="assertion[isAssertToOtherSchool]"]:checked');
+        var assertToOtherSchoolName = document.querySelector('.assertToOtherSchoolName');
+        var assertToOtherSchoolNoWhy = document.querySelector('.assertToOtherSchoolNoWhy');
+        if (assertToOtherSchoolName && assertToOtherSchoolNoWhy) {
+            if (radioInput && radioInput.value == 1) {
+                assertToOtherSchoolName.style.display = 'block';
+                assertToOtherSchoolNoWhy.style.display = 'none';
+            } else {
+                assertToOtherSchoolNoWhy.style.display = 'block';
+                assertToOtherSchoolName.style.display = 'none';
+            }
+        }
+    }
+    var isAssertToOtherSchoolRadioInputs = document.querySelectorAll('input[name="assertion[isAssertToOtherSchool]"]');
+    isAssertToOtherSchoolRadioInputs.forEach(function (input) {
+        input.addEventListener('change', isAssertToOtherSchoolToggleElement);
+    });
+
+
+    function assertToOtherSchoolNoWhyToggleElement(event) {
+        var assertToOtherSchoolNoWhyOther = document.querySelector('.assertToOtherSchoolNoWhyOther');
+        const selectedValue = event.target.value;
+        if (selectedValue == 'Autre') {
+            assertToOtherSchoolNoWhyOther.style.display = 'block';
+        } else {
+            assertToOtherSchoolNoWhyOther.style.display = 'none';
+        }
+    }
+    const assertToOtherSchoolNoWhyInput = document.getElementById('assertion_assertToOtherSchoolNoWhy');
+    assertToOtherSchoolNoWhyInput.addEventListener('change', assertToOtherSchoolNoWhyToggleElement);
+
+    function positionToggleElement(event) {
+        var positionOther = document.querySelector('.positionOther');
+        const selectedValue = event.target.value;
+        if (selectedValue == 'Autre') {
+            positionOther.style.display = 'block';
+        } else {
+            positionOther.style.display = 'none';
+        }
+    }
+    const positionInput = document.getElementById('assertion_position');
+    positionInput.addEventListener('change', positionToggleElement);
+
+
+    function howDidYouKnowOurAgencyToggleElement(event) {
+        var howDidYouKnowOurAgencyOther = document.querySelector('.howDidYouKnowOurAgencyOther');
+        const selectedValue = event.target.value;
+        if (selectedValue == 4) {
+            howDidYouKnowOurAgencyOther.style.display = 'block';
+        } else {
+            howDidYouKnowOurAgencyOther.style.display = 'none';
+        }
+    }
+    const howDidYouKnowOurAgencyInput = document.getElementById('assertion_howDidYouKnowOurAgency');
+    howDidYouKnowOurAgencyInput.addEventListener('change', howDidYouKnowOurAgencyToggleElement);
 });
 
