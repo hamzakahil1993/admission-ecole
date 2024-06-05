@@ -119,6 +119,7 @@ class AssertionType extends AbstractType
                 ],
                 'expanded' => false,
                 'multiple' => false,
+                'required' => false,
                 'label' => 'Pourquoi',
                 'placeholder' => 'Sélectionnez une réponse'
             ])
