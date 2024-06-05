@@ -5,6 +5,8 @@ namespace App\Form;
 use App\Entity\Assertion;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -135,9 +137,13 @@ class AssertionType extends AbstractType
                 'label' => 'Nom',
                 'required' => true,
             ])
-            ->add('email', null, [
+            ->add('email', EmailType::class, [
                 'label' => 'Adresse e-mail',
                 'required' => true,
+            ])
+            ->add('confirm_email', EmailType::class, [
+                'mapped' => false,
+                'label' => 'Confirmez votre adresse e-mail',
             ])
             ->add('nationality', null, [
                 'label' => 'Nationalité',
@@ -147,9 +153,12 @@ class AssertionType extends AbstractType
                 'label' => 'Ville',
                 'required' => true,
             ])
-            ->add('phoneNumber', null, [
+            ->add('phoneNumber', TelType::class, [
                 'label' => 'Numéro de téléphone',
                 'required' => true,
+                'attr' => [
+                    'placeholder' => '+33 6 XX XX XX XX'
+                ],
             ])
             ->add('position', ChoiceType::class, [
                 'choices' => [

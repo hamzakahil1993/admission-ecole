@@ -26,7 +26,8 @@
         </div>
         <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
             <div class="col-lg-6">
-                {{ form_start(form) }}
+                {{ form_start(form, { 'attr': { 'id': 'assertion_form' } }) }}
+
                 <div class="isTcf">
                     {{ form_row(form.isTcf) }}
                 </div>
@@ -77,6 +78,9 @@
                 </div>
                 <div class="email">
                     {{ form_row(form.email) }}
+                </div>
+                <div class="confirm_email">
+                    {{ form_row(form.confirm_email) }}
                 </div>
                 <div class="nationality">
                     {{ form_row(form.nationality) }}
@@ -229,6 +233,17 @@
     const howDidYouKnowOurAgencyInput = document.getElementById('assertion_howDidYouKnowOurAgency');
     if (howDidYouKnowOurAgencyInput) {
         howDidYouKnowOurAgencyInput.addEventListener('change', howDidYouKnowOurAgencyToggleElement);
+    }
+    const form = document.getElementById('assertion_form');
+    const email = document.getElementById('assertion_email');
+    const confirmEmail = document.getElementById('assertion_confirm_email');
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            if (email.value !== confirmEmail.value) {
+                event.preventDefault();
+                alert('Veuillez corriger votre adresse e-mail');
+            }
+        });
     }
 </script>
 {% endblock %}
