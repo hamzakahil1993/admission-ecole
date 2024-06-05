@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -13,26 +12,26 @@
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
         rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{asset('/assets/css/app.css')}}">
     {% block stylesheets %}
     {% endblock %}
-
     {% block javascripts %}
-    {% block importmap %}{{ importmap('app') }}{% endblock %}
     {% endblock %}
 </head>
-
 <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="{{path('app_home')}}"><img src="{{asset('/assets/img/logo-admission-ecole.png')}}" alt=""></a>
+            <a class="navbar-brand" href="{{path('app_home')}}"><img
+                    src="{{asset('/assets/img/logo-admission-ecole.png')}}" alt=""></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
                     <li class="nav-item"><a class="nav-link" href="{{path('app_home')}}">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{path('app_assertion_new')}}">Postuler Mantenant</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{path('app_assertion_new')}}">Postuler Mantenant</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -48,6 +47,52 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- SimpleLightbox plugin JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Navbar shrink function
+            var navbarShrink = function () {
+                const navbarCollapsible = document.body.querySelector('#mainNav');
+                if (!navbarCollapsible) {
+                    return;
+                }
+                if (window.scrollY === 0) {
+                    navbarCollapsible.classList.remove('navbar-shrink')
+                } else {
+                    navbarCollapsible.classList.add('navbar-shrink')
+                }
+
+            };
+
+            navbarShrink();
+
+            document.addEventListener('scroll', navbarShrink);
+
+            const mainNav = document.body.querySelector('#mainNav');
+            if (mainNav) {
+                new bootstrap.ScrollSpy(document.body, {
+                    target: '#mainNav',
+                    rootMargin: '0px 0px -40%',
+                });
+            };
+
+            const navbarToggler = document.body.querySelector('.navbar-toggler');
+            const responsiveNavItems = [].slice.call(
+                document.querySelectorAll('#navbarResponsive .nav-link')
+            );
+            responsiveNavItems.map(function (responsiveNavItem) {
+                responsiveNavItem.addEventListener('click', () => {
+                    if (window.getComputedStyle(navbarToggler).display !== 'none') {
+                        navbarToggler.click();
+                    }
+                });
+            });
+
+            new SimpleLightbox({
+                elements: '#portfolio a.portfolio-box'
+            });
+        });
+
+    </script>
 </body>
 
 </html>
