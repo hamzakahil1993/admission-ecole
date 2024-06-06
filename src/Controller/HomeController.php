@@ -17,7 +17,7 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\Mailer\Transport;
 use Symfony\Component\Mailer\Mailer;
 
-#[Route('/home')]
+#[Route('/')]
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
