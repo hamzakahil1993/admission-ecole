@@ -89,7 +89,13 @@
                     {{ form_row(form.city) }}
                 </div>
                 <div class="phoneNumber">
-                    {{ form_row(form.phoneNumber) }}
+                <label for="assertion_phone_number" class="form-label required">Numéro de téléphone</label>
+                    <table>
+                        <tr>
+                            <td style="width: 30%;">{{ form_row(form.countryPhoneCode) }}</td>
+                            <td>{{ form_row(form.phoneNumber) }}</td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="position">
                     {{ form_row(form.position) }}

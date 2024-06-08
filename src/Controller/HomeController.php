@@ -33,6 +33,17 @@ class HomeController extends AbstractController
         $form = $this->createForm(AssertionType::class, $assertion);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $countryCode = $form->get('countryPhoneCode')->getData();
+            $phoneNumber = $assertion->getPhoneNumber();
+            if (substr($phoneNumber, 0, 1) === '+') {
+                $fullPhoneNumber = $phoneNumber;
+            } else {
+                if (substr($phoneNumber, 0, 1) === '0') {
+                    $phoneNumber = substr($phoneNumber, 1);
+                }
+                $fullPhoneNumber = $countryCode . $phoneNumber;
+            }
+            $assertion->setPhoneNumber($fullPhoneNumber);
             $entityManager->persist($assertion);
             $entityManager->flush();
             $emailService->sendEmailNewAssertion($assertion);
