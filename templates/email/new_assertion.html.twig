@@ -1,10 +1,166 @@
 <!DOCTYPE html>
 <html>
-    <body>
-        <h1>{{ subject }}</h1>
-        <p>
-            Bonjour,<br>
-            Vous avez une nouvelle postulation : <a href="{{website_url}}/admin/assertion/show/{{assertion.id}}">Assertion ID#{{assertion.id}}</a>
-        </p>
-    </body>
+
+<head>
+    <style>
+        .table th {
+            font-weight: bold;
+            background-color: rgb(168, 144, 115);
+        }
+        .table {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        Bonjour,<br>
+        Vous avez une nouvelle postulation : <a href="{{website_url}}/admin/assertion/show/{{assertion.id}}">Postulation
+            ID#{{assertion.id}} <br> </a>
+    </p>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ID</th>
+            </tr>
+            <tr>
+                <td>#{{ assertion.id }} <br> </td>
+            </tr>
+            <tr>
+                <th>TCF </th>
+            </tr>
+            <tr>
+                <td>{{ assertion.getISTcf ? 'Oui' : 'Non' }} <br> </td>
+            </tr>
+            <tr>
+                <th>Score TCF</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.tcfScore }} <br> </td>
+            </tr>
+            <tr>
+                <th>Domaine d'études</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.studyField }} <br> </td>
+            </tr>
+            <tr>
+                <th>Niveau d'étude</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.getStudyLevelString }} <br> </td>
+            </tr>
+            <tr>
+                <th>Etudes à Paris</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.getWhereToStudyString }} <br> </td>
+            </tr>
+            <tr>
+                <th>Autre</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.otherWhereToStudy }} <br> </td>
+            </tr>
+            <tr>
+                <th>Accepte la réorientation</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.getISReorientation ? 'Oui' : 'Non'}} <br> </td>
+            </tr>
+            <tr>
+                <th>Quel domaine de réorientation</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.reorientationDetail }} <br> </td>
+            </tr>
+            <tr>
+                <th>Autre domaine de réorientation</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.reorientationDetailExtended }} <br> </td>
+            </tr>
+            <tr>
+                <th>Accepte paiement à l'avance</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.getISPaidInAdvance ? 'Oui' : 'Non' }} <br> </td>
+            </tr>
+            <tr>
+                <th>A postulé dans une autre école</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.getISAssertToOtherSchool ? 'Oui' : 'Non' }} <br> </td>
+            </tr>
+            <tr>
+                <th>Quelles ecoles</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.assertToOtherSchoolName }} <br> </td>
+            </tr>
+            <tr>
+                <th>Pourquoi pas?</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.assertToOtherSchoolNoWhy }} <br> </td>
+            </tr>
+            <tr>
+                <th>Nom & Prénom</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.firstName }} {{ assertion.familyName }} <br> </td>
+            </tr>
+            <tr>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.email }} <br> </td>
+            </tr>
+            <tr>
+                <th>Nationalité</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.nationality }} <br> </td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.city }} <br> </td>
+            </tr>
+            <tr>
+                <th>Numero de téléphone</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.phoneNumber }} <br> </td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.position }} <br> </td>
+            </tr>
+            <tr>
+                <th>Autre Statut</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.positionOther }} <br> </td>
+            </tr>
+            <tr>
+                <th>Comment connaissez vous l'agence</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.getHowDidYouKnowOurAgencyString }} <br> </td>
+            </tr>
+            <tr>
+                <th>Autre</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.howDidYouKnowOurAgencyOther }} <br> </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
 </html>
