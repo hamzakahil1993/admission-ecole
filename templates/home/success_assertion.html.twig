@@ -5,12 +5,22 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-lg-8 text-center"><br><br><br><br>
+                {% if is_success == 1 %}
                 <h2 class="text-white mt-0">Félicitations !</h2>
                 <hr class="divider divider-light" />
+                {% endif %}
+                {% if is_success == 1 %}
                 <p class="text-white-75 mb-4">
                     Votre demande a bien été transmise, nous revenons vers vous très bientôt afin de vous proposer une
                     formation qui convient à votre projet !
                 </p>
+                {% else %}
+                <br><br>
+                <p class="text-white-75 mb-4">
+                    Vous avez déjà envoyé une demande, nous revenons vers vous très bientôt afin de vous proposer une
+                    formation qui convient à votre projet !
+                </p>
+                {% endif %}
             </div>
         </div>
     </div>

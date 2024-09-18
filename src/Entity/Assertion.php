@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AssertionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -118,6 +120,17 @@ class Assertion
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $assertToOtherSchoolNoWhyOther = null;
+
+    /**
+     * @var Collection<int, AssertionDocument>
+     */
+    #[ORM\OneToMany(targetEntity: AssertionDocument::class, mappedBy: 'assertion')]
+    private Collection $assertionDocuments;
+
+    public function __construct()
+    {
+        $this->assertionDocuments = new ArrayCollection();
+    }
 
     public function getId(): int
     {
@@ -424,6 +437,36 @@ class Assertion
     public function setAssertToOtherSchoolNoWhyOther(?string $assertToOtherSchoolNoWhyOther): static
     {
         $this->assertToOtherSchoolNoWhyOther = $assertToOtherSchoolNoWhyOther;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, AssertionDocument>
+     */
+    public function getAssertionDocuments(): Collection
+    {
+        return $this->assertionDocuments;
+    }
+
+    public function addAssertionDocument(AssertionDocument $assertionDocument): static
+    {
+        if (!$this->assertionDocuments->contains($assertionDocument)) {
+            $this->assertionDocuments->add($assertionDocument);
+            $assertionDocument->setAssertion($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssertionDocument(AssertionDocument $assertionDocument): static
+    {
+        if ($this->assertionDocuments->removeElement($assertionDocument)) {
+            // set the owning side to null (unless already changed)
+            if ($assertionDocument->getAssertion() === $this) {
+                $assertionDocument->setAssertion(null);
+            }
+        }
 
         return $this;
     }

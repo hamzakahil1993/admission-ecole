@@ -8,6 +8,7 @@ parameters:
     app.mailer_dns: '%env(MAILER_DSN)%'
     app.sender_email: '%env(APP_SENDER_EMAIL)%'
     app.receiver_email: '%env(APP_RECEIVER_EMAIL)%'
+    uploads_directory: '%kernel.project_dir%/public/assets/uploads'
 
 services:
     # default configuration for services in *this* file

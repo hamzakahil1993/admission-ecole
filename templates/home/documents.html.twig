@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<!-- Contact-->
+<section class="page-section bg-admission bg-tour-effeil" style="margin-top: 6rem; padding: 4rem 0;">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 text-center">
+                <p class="text-white">
+                    Il est important pour nos services d'avoir accès à votre dossier pédagogique afin de vous
+                    orienter au mieux
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-section" id="contact">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6">
+                <p class="text-muted mb-2">Merci de nous transmettre les documents suivants :</p>
+                <ul class="text-left">
+                    <li>Pièce d'identité</li>
+                    <li>Diplôme du bac</li>
+                    <li>Relevé de note du bac</li>
+                    <li>Diplômes universitaires obtenus</li>
+                    <li>Relevés du bac obtenus</li>
+                    <li>TCF (Test de langue française) si vous êtes issu d'un pays non francophone</li>
+                    <li>Formations/stages/attestation de travail</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+            <div class="col-lg-6">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.documents) }}
+                    {{ form_widget(form.documents, {'attr': {'class': 'form-control-file'}}) }}
+                </div>
+                <button class="btn btn-secondary mt-4">Envoyer</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

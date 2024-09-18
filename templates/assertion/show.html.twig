@@ -96,6 +96,14 @@
                 <th>Autre</th>
                 <td>{{ assertion.howDidYouKnowOurAgencyOther }}</td>
             </tr>
+            <tr>
+                <th>Documents</th>
+                <td>
+                    {% for document in assertion.assertionDocuments %}
+                        <a href="{{asset('/assets/uploads/' ~ document.name )}}" download>{{document.name}}</a><br>
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

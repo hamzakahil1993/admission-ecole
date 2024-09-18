@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .table th {
+            font-weight: bold;
+            background-color: rgb(168, 144, 115);
+        }
+
+        .table {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        Bonjour,<br>
+        Vous avez des documents reçus : <a href="{{website_url}}/admin/assertion/show/{{assertion.id}}">Postulation
+            ID#{{assertion.id}} <br> </a>
+    </p>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ID</th>
+            </tr>
+            <tr>
+                <td>#{{ assertion.id }} <br> </td>
+            </tr>
+            <tr>
+                <th>Nom & Prénom</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.firstName }} {{ assertion.familyName }} <br> </td>
+            </tr>
+            <tr>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td>{{ assertion.email }} <br> </td>
+            </tr>
+            <tr>
+                <th>Documents</th>
+            </tr>
+            <tr>
+                <td>
+                    {% for document in assertion.assertionDocuments %}
+                    <a href="{{website_url}}/assets/uploads/{{document.name}}" download>{{document.name}}</a><br>
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
