@@ -17,7 +17,8 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-lg-8 col-xl-6">
-                <p class="text-muted mb-2">Merci de nous transmettre les documents suivants :</p>
+                <p class="text-muted" style="font-size: 1.2rem;">Félicitations ! Votre candidature a bien été prise en compte.</p>
+                <p class="text-muted mb-2">Pour qu'elle soit traitée plus rapidement, merci de nous transmettre les documents suivants :</p>
                 <ul class="text-left">
                     <li>Pièce d'identité</li>
                     <li>Diplôme du bac</li>
@@ -37,6 +38,7 @@
                     {{ form_widget(form.documents, {'attr': {'class': 'form-control-file'}}) }}
                 </div>
                 <button class="btn btn-secondary mt-4">Envoyer</button>
+                <a href="{{path('app_home')}}" class="btn btn-success mt-4">Retour à l'accueil</a>
                 {{ form_end(form) }}
             </div>
         </div>
